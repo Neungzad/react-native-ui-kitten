@@ -164,7 +164,7 @@ import { RkTheme } from '../../styles/themeManager';
  * @property {number} index - Function for rendering custom footer
  *
  */
-export class RkModalImg extends RkComponent {
+class RkModalImg extends RkComponent {
   static propTypes = {
     index: PropTypes.number,
     source: PropTypes.oneOfType([
@@ -423,3 +423,5 @@ export class RkModalImg extends RkComponent {
     );
   }
 }
+
+export { RkModalImg };
