@@ -1,16 +1,10 @@
-import React from 'react';
-import {
-  Modal,
-  View,
-  Animated,
-  StyleSheet,
-  ViewPropTypes,
-} from 'react-native';
-import { RkComponent } from '../rkComponent';
-import { RkGalleryGrid } from './rkGalleryGrid';
-import { RkGalleryViewer } from './rkGalleryViewer';
-import { RkGalleryHeaderFooter } from './RkGalleryHeaderFooter';
-import { RkButton } from '../button/rkButton';
+import React from "react";
+import { Modal, View, Animated, StyleSheet, ViewPropTypes } from "react-native";
+import { RkComponent } from "../rkComponent";
+import { RkGalleryGrid } from "./rkGalleryGrid";
+import { RkGalleryViewer } from "./rkGalleryViewer";
+import { RkGalleryHeaderFooter } from "./RkGalleryHeaderFooter";
+import { RkButton } from "../button/rkButton";
 
 /**
  * `RkGallery` is a component which displays a grid of images or a horizontal list of modal images
@@ -195,7 +189,7 @@ export class RkGallery extends RkComponent {
     onGalleryItemClick: RkGalleryViewer.propTypes.onItemClick,
     onGalleryItemChange: RkGalleryViewer.propTypes.onItemChange,
     onGalleryItemScaleChange: RkGalleryViewer.propTypes.onItemScaleChange,
-    style: ViewPropTypes.style,
+    style: ViewPropTypes.style
   };
   static defaultProps = {
     rkType: RkComponent.defaultProps.rkType,
@@ -208,35 +202,38 @@ export class RkGallery extends RkComponent {
     onGalleryItemClick: RkGalleryViewer.defaultProps.onItemClick,
     onGalleryItemChange: RkGalleryViewer.defaultProps.onItemChange,
     onGalleryItemScaleChange: RkGalleryViewer.defaultProps.onItemScaleChange,
-    style: null,
+    style: null
   };
-  componentName = 'RkGallery';
+  componentName = "RkGallery";
   typeMapping = {
     grid: {},
     gridItem: {},
     previewHeader: {},
-    previewFooter: {},
+    previewFooter: {}
   };
 
   state = {
     previewImageIndex: undefined,
-    overlayOpacity: new Animated.Value(0),
+    overlayOpacity: new Animated.Value(0)
   };
 
   isPreview = () => this.state.previewImageIndex !== undefined;
 
   // eslint-disable-next-line arrow-body-style
-  getOverlayAnimation = (endValue) => {
-    return Animated.timing(this.state.overlayOpacity, { toValue: endValue, duration: 300 });
+  getOverlayAnimation = endValue => {
+    return Animated.timing(this.state.overlayOpacity, {
+      toValue: endValue,
+      duration: 300
+    });
   };
 
   onModalRequestClose = () => {
     const change = {
       previous: this.state.previewImageIndex,
-      current: undefined,
+      current: undefined
     };
     this.setState({
-      previewImageIndex: change.current,
+      previewImageIndex: change.current
     });
     this.props.onGalleryItemChange(change);
   };
@@ -248,9 +245,9 @@ export class RkGallery extends RkComponent {
     this.props.onGalleryItemClick(item, index);
   };
 
-  onViewerItemChange = (change) => {
+  onViewerItemChange = change => {
     this.setState({
-      previewImageIndex: change.current,
+      previewImageIndex: change.current
     });
     this.props.onGalleryItemChange(change);
   };
@@ -258,41 +255,41 @@ export class RkGallery extends RkComponent {
   onGridItemClick = (item, index) => {
     const change = {
       previous: this.state.previewImageIndex,
-      current: index,
+      current: index
     };
     this.setState({
       previewImageIndex: change.current,
-      overlayOpacity: new Animated.Value(1),
+      overlayOpacity: new Animated.Value(1)
     });
     this.props.onGridItemClick(item, index);
     this.props.onGalleryItemChange(change);
   };
 
-  renderDefaultViewerHeader = (onRequestClose) => (
+  renderDefaultViewerHeader = onRequestClose => (
     <View>
-      <RkButton
-        rkType='clear'
-        onPress={onRequestClose}>
+      <RkButton rkType="clear" onPress={onRequestClose}>
         Close
       </RkButton>
     </View>
   );
 
-  renderDefaultViewerFooter = () => (
-    <View />
-  );
+  renderDefaultViewerFooter = () => <View />;
 
   renderViewer = () => {
-    const { previewHeader, previewFooter } = this.defineStyles(this.props.rkType);
+    const { previewHeader, previewFooter } = this.defineStyles(
+      this.props.rkType
+    );
     const header = {
-      onRenderComponent: this.props.renderGalleryHeader || this.renderDefaultViewerHeader,
+      onRenderComponent:
+        this.props.renderGalleryHeader || this.renderDefaultViewerHeader,
       definedStyle: this.props.renderGalleryHeader ? null : previewHeader,
-      stateStyle: { opacity: this.state.overlayOpacity },
+      stateStyle: { opacity: this.state.overlayOpacity }
     };
     const footer = {
-      onRenderComponent: this.props.renderGalleryFooter || this.renderDefaultViewerFooter,
+      onRenderComponent:
+        this.props.renderGalleryFooter || this.renderDefaultViewerFooter,
       definedStyle: this.props.renderGalleryFooter ? null : previewFooter,
-      stateStyle: { opacity: this.state.overlayOpacity },
+      stateStyle: { opacity: this.state.overlayOpacity }
     };
     return (
       <Modal onRequestClose={this.onModalRequestClose}>
@@ -306,12 +303,24 @@ export class RkGallery extends RkComponent {
             onItemScaleChange={this.props.onGalleryItemScaleChange}
           />
           <RkGalleryHeaderFooter
-            style={[header.definedStyle, defaultComponentStyles.viewerHeader, header.stateStyle]}
-            onRenderComponent={() => header.onRenderComponent(this.onModalRequestClose)}
+            style={[
+              header.definedStyle,
+              defaultComponentStyles.viewerHeader,
+              header.stateStyle
+            ]}
+            onRenderComponent={() =>
+              header.onRenderComponent(this.onModalRequestClose)
+            }
           />
           <RkGalleryHeaderFooter
-            style={[footer.definedStyle, defaultComponentStyles.viewerFooter, footer.stateStyle]}
-            onRenderComponent={footer.onRenderComponent}
+            style={[
+              footer.definedStyle,
+              defaultComponentStyles.viewerFooter,
+              footer.stateStyle
+            ]}
+            onRenderComponent={() =>
+              footer.onRenderComponent(this.onModalRequestClose)
+            }
           />
         </View>
       </Modal>
@@ -338,17 +347,17 @@ export class RkGallery extends RkComponent {
 
 const defaultComponentStyles = StyleSheet.create({
   viewerContainer: {
-    marginTop: 20,
+    marginTop: 20
   },
   viewerHeader: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
-    right: 0,
+    right: 0
   },
   viewerFooter: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
-    bottom: 0,
-  },
+    bottom: 0
+  }
 });
