@@ -55,6 +55,33 @@ export const STRUCTURE = [
     children: [
       {
         type: 'page',
+        name: 'RkBadge',
+        demogif: 'badge.gif',
+        children: [
+          {
+            type: 'block',
+            block: 'rk-description',
+            klass: 'RkBadge',
+          },
+          {
+            type: 'block',
+            block: 'rk-examples',
+            klass: 'RkBadge',
+          },
+          {
+            type: 'block',
+            block: 'rk-props',
+            klass: 'RkBadge',
+          },
+          {
+            type: 'block',
+            block: 'rk-styles',
+            klass: 'RkBadge',
+          }
+        ]
+      },
+      {
+        type: 'page',
         name: 'RkButton',
         demogif: 'button.gif',
         children: [
@@ -77,6 +104,38 @@ export const STRUCTURE = [
             type: 'block',
             block: 'rk-styles',
             klass: 'RkButton',
+          }
+        ]
+      },
+      {
+        type: 'page',
+        name: 'RkCalendar',
+        demogif: 'calendar-range.gif',
+        children: [
+          {
+            type: 'block',
+            block: 'rk-description',
+            klass: 'RkCalendar',
+          },
+          {
+            type: 'block',
+            block: 'rk-examples',
+            klass: 'RkCalendar',
+          },
+          {
+            type: 'block',
+            block: 'rk-methods',
+            klass: 'RkCalendar',
+          },
+          {
+            type: 'block',
+            block: 'rk-props',
+            klass: 'RkCalendar',
+          },
+          {
+            type: 'block',
+            block: 'rk-styles',
+            klass: 'RkCalendar',
           }
         ]
       },
@@ -282,6 +341,38 @@ export const STRUCTURE = [
             type: 'block',
             block: 'rk-styles',
             klass: 'RkTabView',
+          }
+        ]
+      },
+      {
+        type: 'page',
+        name: 'RkTabSet',
+        demogif: 'tab-view.gif',
+        children: [
+          {
+            type: 'block',
+            block: 'rk-description',
+            klass: 'RkTabSet',
+          },
+          {
+            type: 'block',
+            block: 'rk-examples',
+            klass: 'RkTabSet',
+          },
+          {
+            type: 'block',
+            block: 'rk-props',
+            klass: 'RkTabSet',
+          },
+          {
+            type: 'block',
+            block: 'rk-props',
+            klass: 'RkTab',
+          },
+          {
+            type: 'block',
+            block: 'rk-styles',
+            klass: 'RkTabSet',
           }
         ]
       },

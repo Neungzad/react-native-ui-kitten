@@ -28,6 +28,9 @@ export class ComponentsScreen extends React.Component {
       title: 'Buttons',
       route: 'Button',
     }, {
+      title: 'Calendars',
+      route: 'Calendars',
+    }, {
       title: 'Switches',
       route: 'Switch',
     }, {
@@ -46,8 +49,8 @@ export class ComponentsScreen extends React.Component {
       title: 'Gallery',
       route: 'Gallery',
     }, {
-      title: 'Tab View',
-      route: 'Tab',
+      title: 'Tab Set',
+      route: 'TabSet',
     }, {
       title: 'Custom Control View',
       route: 'Avatar',
