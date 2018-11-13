@@ -25,18 +25,12 @@
     "eslint-plugin-import": "2.11.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "husky": "0.14.3",
     "react": "16.4.0",
     "react-native": "0.55.4"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run prepush"
-    }
   },
   "repository": {
     "type": "git",
