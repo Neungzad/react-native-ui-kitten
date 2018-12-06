@@ -347,7 +347,7 @@ export class RkGallery extends RkComponent {
 
 const defaultComponentStyles = StyleSheet.create({
   viewerContainer: {
-    marginTop: 20
+    marginTop: 0
   },
   viewerHeader: {
     position: "absolute",
