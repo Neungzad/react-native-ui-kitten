@@ -119,7 +119,7 @@ export class RkGalleryViewer extends React.Component {
   renderItemView = ({ item, index }) => (
     <RkGalleryImage
       source={item}
-      maxScale={this.props.itemMaxScale}
+      maxScale={1.5}
       onClick={() => this.onItemViewClick(item, index)}
       onScaleChange={(change) => this.onItemScaleChange(item, index, change)}
       onOffsetChange={(change) => this.onItemOffsetChange(item, index, change)}
@@ -127,6 +127,7 @@ export class RkGalleryViewer extends React.Component {
         width: this.state.itemSize.width,
         height: this.state.itemSize.height,
       }}
+      resizeMode="contain"
     />
   );
 
